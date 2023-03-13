@@ -10,10 +10,10 @@ public class Product {
 	String unit;
 
 	/**
-	 * @param name
-	 * @param price
-	 * @param quantity
-	 * @param unit
+	 * @param name Название товара
+	 * @param price Цена
+	 * @param quantity Количество
+	 * @param unit еденица измерения товара
 	 */
 	public Product(String name, Double price, Integer quantity, String unit) {
 		this.name = name;

@@ -5,14 +5,6 @@ package dz1;
  */
 public class Lemonade extends Drinks {
 
-	/**
-	 * @param name
-	 * @param price
-	 * @param quantity
-	 * @param unit
-	 * @param shelfLife
-	 * @param volume
-	 */
 	public Lemonade(String name, Double price, Integer quantity, String unit, String shelfLife, Integer volume) {
 		super(name, price, quantity, unit, shelfLife, volume);
 	}

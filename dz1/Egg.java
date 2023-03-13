@@ -15,7 +15,7 @@ public class Egg extends Food {
 	 * @param quantity
 	 * @param unit
 	 * @param shelfLife срок годности
-	 * @param volume количество в упакове
+	 * @param volume    количество в упакове
 	 */
 	public Egg(String name, Double price, Integer quantity, String unit, String shelfLife, Integer volume) {
 		super(name, price, quantity, unit, shelfLife);
