@@ -13,25 +13,13 @@ import dz2.Animal.WildAnimal.Bird.*;
 public class Program {
 
 	public static void main(String[] args) {
-		Animal tiger = new Tiger_home(1.0, 130.0, "blue", "Li", "tiger", false, "yeloy", "10.10.2010", true);
-		Animal tiger_new = new Tiger_Wild(1.0, 130.0, "blue", "india", "10.10.2020");
-		Animal birds = new Stork(0.8, 3.5, "green", "afrika", "10.10.2011", 10);
-
-		// Zoo zo = new Zoo();
-		// zo.addAnimal(tiger_new);
-		// zo.addAnimal(birds);
-		// zo.addAnimal(tiger);
-		// zo.getAnimalInformation(1);
-		// zo.MakeASound(2);
-		// zo.getAnimals();
-		// zo.MakeASounds();
-
-		// Scanner sc = new Scanner();
-
-		System.out.println("Helloy, please select in menu");
+		
 		Zoo zoo = new Zoo();
-
-		while (true) {
+		addAnimalStok(zoo);
+		
+		System.out.println("Hello, please select in menu");
+		Boolean switc = true;
+		while (switc) {
 			printMenu();
 			Integer val = (Integer) scan();
 			switch (val) {
@@ -40,13 +28,31 @@ public class Program {
 					break;
 				case 2:
 					zoo.getAnimals();
+					break;
 				case 3:
+					Integer i = getInt("Please input number animal: ");
+					if (i <= zoo.length()) {
+						zoo.getAnimalInformation(i);
+					}else System.out.println("error input num, please input 1-"+zoo.length());
+					break;
 				case 4:
+					Integer a = getInt("Please input number animal: ");
+					if (a <= zoo.length()) {
+						zoo.MakeASound(a);
+					}else System.out.println("error input num, please input 1-"+zoo.length());
+					break;
 				case 5:
+					zoo.MakeASounds();
+					break;
 				case 6:
-
+					Integer d = getInt("Please input number animal: ");
+					if (d <= zoo.length()) {
+						zoo.deleteAnimal(d);
+					}else System.out.println("error input num, please input 1-"+zoo.length());
+					break;
 				case 0:
 				default:
+					switc = false;
 					break;
 			}
 		}
@@ -60,13 +66,13 @@ public class Program {
 		System.out.println("4. Издать звук животного");
 		System.out.println("5. Пусть все кричат");
 		System.out.println("6. Удалить животного из зоопарка");
-		System.out.println("0-Выход");
+		System.out.println("0. Выход");
 
 	}
 
 	public static void addAnimal(Zoo zoo) {
 		Animal new_animal = createAnimal();
-		if (new_animal == null){
+		if (new_animal == null) {
 			System.out.println("Add animal error");
 			return;
 		}
@@ -85,26 +91,31 @@ public class Program {
 				break;
 			case 2:
 
-				obj = new Tiger_home(getDouble("growth: "), getDouble("weight: "), getStr("eye color: "), getStr("nickname: "),
-				getStr("breed: "), getBoll("vaccination: "), getStr("wool color: "), getStr("date of birth: "),
-				getBoll("presence of wool: "));
+				obj = new Tiger_home(getDouble("growth: "), getDouble("weight: "), getStr("eye color: "),
+						getStr("nickname: "),
+						getStr("breed: "), getBoll("vaccination: "), getStr("wool color: "), getStr("date of birth: "),
+						getBoll("presence of wool: "));
 				break;
 			case 3:
-				obj = new Tiger_Wild(getDouble("growth: "), getDouble("weight: "), getStr("eye color: "), getStr("habitat: "), getStr("date of location: "));
+				obj = new Tiger_Wild(getDouble("growth: "), getDouble("weight: "), getStr("eye color: "),
+						getStr("habitat: "), getStr("date of location: "));
 				break;
 			case 4:
 				obj = new Dog(getDouble("growth: "), getDouble("weight: "), getStr("eye color: "), getStr("nickname: "),
-				getStr("breed: "), getBoll("vaccination: "), getStr("wool color: "), getStr("date of birth: "),
-				getBoll("the presence of training: "));
+						getStr("breed: "), getBoll("vaccination: "), getStr("wool color: "), getStr("date of birth: "),
+						getBoll("the presence of training: "));
 				break;
 			case 5:
-				obj = new Wolf(getDouble("growth: "), getDouble("weight: "), getStr("eye color: "), getStr("habitat: "), getStr("date of location: "),getBoll("the leader of the pack: "));
+				obj = new Wolf(getDouble("growth: "), getDouble("weight: "), getStr("eye color: "), getStr("habitat: "),
+						getStr("date of location: "), getBoll("the leader of the pack: "));
 				break;
 			case 6:
-				obj = new Chicken(getDouble("growth: "), getDouble("weight: "), getStr("eye color: "), getStr("habitat: "), getStr("date of location: "), getInt("flight height: "));
+				obj = new Chicken(getDouble("growth: "), getDouble("weight: "), getStr("eye color: "),
+						getStr("habitat: "), getStr("date of location: "), getInt("flight height: "));
 				break;
 			case 7:
-				obj = new Stork(getDouble("growth: "), getDouble("weight: "), getStr("eye color: "), getStr("habitat: "), getStr("date of location: "), getInt("flight height: "));
+				obj = new Stork(getDouble("growth: "), getDouble("weight: "), getStr("eye color: "),
+						getStr("habitat: "), getStr("date of location: "), getInt("flight height: "));
 				break;
 			default:
 				System.out.println("Такого животного нет");
@@ -123,7 +134,8 @@ public class Program {
 		System.out.println("6. Курица");
 		System.out.println("7. Аист");
 	}
-	static Integer getInt(String textM){
+
+	static Integer getInt(String textM) {
 		System.out.print(textM);
 		Integer val = (Integer) scan();
 		return val;
@@ -147,20 +159,26 @@ public class Program {
 		return val;
 	}
 
-
 	public static Object scan() {
 		Object val;
 		Scanner in = new Scanner(System.in);
-		if(in.hasNextBigInteger()){
+		if (in.hasNextBigInteger()) {
 			val = in.nextInt();
-		}else
-		if (in.hasNextBigDecimal()) {
+		} else if (in.hasNextBigDecimal()) {
 			val = in.nextDouble();
-		}else
-		if (in.hasNextBoolean()) {
+		} else if (in.hasNextBoolean()) {
 			val = in.nextBoolean();
-		}else
-		val = in.nextLine();
+		} else
+			val = in.nextLine();
 		return val;
+	}
+
+	public static void addAnimalStok(Zoo zoo) {
+		Animal tiger = new Tiger_home(1.0, 130.0, "blue", "Li", "tiger", false, "yeloy", "10.10.2010", true);
+		Animal tiger_new = new Tiger_Wild(1.0, 130.0, "blue", "india", "10.10.2020");
+		Animal birds = new Stork(0.8, 3.5, "green", "afrika", "10.10.2011", 10);
+		zoo.addAnimal(birds);
+		zoo.addAnimal(tiger);
+		zoo.addAnimal(tiger_new);
 	}
 }

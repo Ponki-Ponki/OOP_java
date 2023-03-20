@@ -44,8 +44,11 @@ public class Zoo {
 	}
 
 	public void getAnimals() {
+		Integer i = 0;
 		for (Animal item : zoo){
-			item.printIformation();
+
+			System.out.println(++i+ ". " +item.getClass().getSimpleName());
+			// item.printIformation();
 		}
 	}
 
@@ -55,7 +58,7 @@ public class Zoo {
 		}
 	}
 
-	public void length() {
-		System.out.println(zoo.length);	
+	public Integer length() {
+		return zoo.length;	
 	}
 }
