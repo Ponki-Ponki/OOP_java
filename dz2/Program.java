@@ -1,10 +1,13 @@
 package dz2;
 
-// import java.util.Scanner;
+import java.util.Scanner;
 
 import dz2.Animal.Animal;
+import dz2.Animal.HomeAnumal.Dog;
+import dz2.Animal.HomeAnumal.Cat.Cat;
 import dz2.Animal.HomeAnumal.Cat.Tiger_home;
 import dz2.Animal.WildAnimal.Tiger_Wild;
+import dz2.Animal.WildAnimal.Wolf;
 import dz2.Animal.WildAnimal.Bird.*;
 
 public class Program {
@@ -14,25 +17,29 @@ public class Program {
 		Animal tiger_new = new Tiger_Wild(1.0, 130.0, "blue", "india", "10.10.2020");
 		Animal birds = new Stork(0.8, 3.5, "green", "afrika", "10.10.2011", 10);
 
-		Zoo zo = new Zoo();
-		zo.addAnimal(tiger_new);
-		zo.addAnimal(birds);
-		zo.addAnimal(tiger);
-		zo.getAnimalInformation(1);
-		zo.MakeASound(2);
-		zo.getAnimals();
-		zo.MakeASounds();
+		// Zoo zo = new Zoo();
+		// zo.addAnimal(tiger_new);
+		// zo.addAnimal(birds);
+		// zo.addAnimal(tiger);
+		// zo.getAnimalInformation(1);
+		// zo.MakeASound(2);
+		// zo.getAnimals();
+		// zo.MakeASounds();
 
-		int variable;
 		// Scanner sc = new Scanner();
+
 		System.out.println("Helloy, please select in menu");
 		Zoo zoo = new Zoo();
+
 		while (true) {
 			printMenu();
-			switch (variable) {
+			Integer val = (Integer) scan();
+			switch (val) {
 				case 1:
 					addAnimal(zoo);
+					break;
 				case 2:
+					zoo.getAnimals();
 				case 3:
 				case 4:
 				case 5:
@@ -43,10 +50,10 @@ public class Program {
 					break;
 			}
 		}
-
 	}
 
 	static void printMenu() {
+		System.out.println("		Menu");
 		System.out.println("1. Добавить животного в зоопарк");
 		System.out.println("2. Показать всех животных");
 		System.out.println("3. Показать детальную информацию по животному");
@@ -59,11 +66,101 @@ public class Program {
 
 	public static void addAnimal(Zoo zoo) {
 		Animal new_animal = createAnimal();
+		if (new_animal == null){
+			System.out.println("Add animal error");
+			return;
+		}
 		zoo.addAnimal(new_animal);
 	}
 
 	static Animal createAnimal() {
-		
-		return a;
+		Animal obj = null;
+		printListAnimal();
+		Integer val = (Integer) scan();
+		switch (val) {
+			case 1:
+				obj = new Cat(getDouble("growth: "), getDouble("weight: "), getStr("eye color: "), getStr("nickname: "),
+						getStr("breed: "), getBoll("vaccination: "), getStr("wool color: "), getStr("date of birth: "),
+						getBoll("presence of wool: "));
+				break;
+			case 2:
+
+				obj = new Tiger_home(getDouble("growth: "), getDouble("weight: "), getStr("eye color: "), getStr("nickname: "),
+				getStr("breed: "), getBoll("vaccination: "), getStr("wool color: "), getStr("date of birth: "),
+				getBoll("presence of wool: "));
+				break;
+			case 3:
+				obj = new Tiger_Wild(getDouble("growth: "), getDouble("weight: "), getStr("eye color: "), getStr("habitat: "), getStr("date of location: "));
+				break;
+			case 4:
+				obj = new Dog(getDouble("growth: "), getDouble("weight: "), getStr("eye color: "), getStr("nickname: "),
+				getStr("breed: "), getBoll("vaccination: "), getStr("wool color: "), getStr("date of birth: "),
+				getBoll("the presence of training: "));
+				break;
+			case 5:
+				obj = new Wolf(getDouble("growth: "), getDouble("weight: "), getStr("eye color: "), getStr("habitat: "), getStr("date of location: "),getBoll("the leader of the pack: "));
+				break;
+			case 6:
+				obj = new Chicken(getDouble("growth: "), getDouble("weight: "), getStr("eye color: "), getStr("habitat: "), getStr("date of location: "), getInt("flight height: "));
+				break;
+			case 7:
+				obj = new Stork(getDouble("growth: "), getDouble("weight: "), getStr("eye color: "), getStr("habitat: "), getStr("date of location: "), getInt("flight height: "));
+				break;
+			default:
+				System.out.println("Такого животного нет");
+				break;
+		}
+		return obj;
+	}
+
+	static void printListAnimal() {
+		System.out.println("Выберите какого животного добавить: ");
+		System.out.println("1. Кошка");
+		System.out.println("2. Тигр домашний");
+		System.out.println("3. Тигр дикий");
+		System.out.println("4. Собака");
+		System.out.println("5. Волк");
+		System.out.println("6. Курица");
+		System.out.println("7. Аист");
+	}
+	static Integer getInt(String textM){
+		System.out.print(textM);
+		Integer val = (Integer) scan();
+		return val;
+	}
+
+	static Double getDouble(String textM) {
+		System.out.print(textM);
+		Double val = (Double) scan();
+		return val;
+	}
+
+	static String getStr(String textM) {
+		System.out.print(textM);
+		String val = (String) scan();
+		return val;
+	}
+
+	static Boolean getBoll(String textM) {
+		System.out.print(textM + " (true/false) ");
+		Boolean val = (Boolean) scan();
+		return val;
+	}
+
+
+	public static Object scan() {
+		Object val;
+		Scanner in = new Scanner(System.in);
+		if(in.hasNextBigInteger()){
+			val = in.nextInt();
+		}else
+		if (in.hasNextBigDecimal()) {
+			val = in.nextDouble();
+		}else
+		if (in.hasNextBoolean()) {
+			val = in.nextBoolean();
+		}else
+		val = in.nextLine();
+		return val;
 	}
 }
