@@ -1,13 +1,13 @@
-package dz3.Figures.Base;
+package dz_3.Figures.Base;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import dz3.Figures.Circle;
-import dz3.Figures.Rectangle;
-import dz3.Figures.Square;
-import dz3.Figures.Triangle;
+import dz_3.Figures.Circle;
+import dz_3.Figures.Rectangle;
+import dz_3.Figures.Square;
+import dz_3.Figures.Triangle;
 
 public class ListFigure {
 	List<Figure> list;

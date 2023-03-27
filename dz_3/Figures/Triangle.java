@@ -1,6 +1,6 @@
-package dz3.Figures;
+package dz_3.Figures;
 
-import dz3.Figures.Base.Polygon;
+import dz_3.Figures.Base.Polygon;
 
 public class Triangle extends Polygon{
     public Triangle(int a, int b, int c){

@@ -1,7 +1,7 @@
-package dz3;
+package dz_3;
 
-import dz3.Figures.*;
-import dz3.Figures.Base.*;
+import dz_3.Figures.*;
+import dz_3.Figures.Base.*;
 
 public class Program {
 	public static void main(String[] args) {
