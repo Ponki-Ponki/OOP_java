@@ -161,15 +161,16 @@ public class Program {
 
 	public static Object scan() {
 		Object val;
-		Scanner in = new Scanner(System.in);
-		if (in.hasNextBigInteger()) {
-			val = in.nextInt();
-		} else if (in.hasNextBigDecimal()) {
-			val = in.nextDouble();
-		} else if (in.hasNextBoolean()) {
-			val = in.nextBoolean();
-		} else
-			val = in.nextLine();
+		try (Scanner in = new Scanner(System.in)) {
+			if (in.hasNextBigInteger()) {
+				val = in.nextInt();
+			} else if (in.hasNextBigDecimal()) {
+				val = in.nextDouble();
+			} else if (in.hasNextBoolean()) {
+				val = in.nextBoolean();
+			} else
+				val = in.nextLine();
+		}
 		return val;
 	}
 
