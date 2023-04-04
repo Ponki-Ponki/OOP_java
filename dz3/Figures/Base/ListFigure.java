@@ -1,13 +1,13 @@
-package dz_3.Figures.Base;
+package dz3.Figures.Base;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import dz_3.Figures.Circle;
-import dz_3.Figures.Rectangle;
-import dz_3.Figures.Square;
-import dz_3.Figures.Triangle;
+import dz3.Figures.Circle;
+import dz3.Figures.Rectangle;
+import dz3.Figures.Square;
+import dz3.Figures.Triangle;
 
 public class ListFigure {
 	List<Figure> list;
@@ -110,15 +110,16 @@ public class ListFigure {
 
 	public Object scan() {
 		Object val;
-		Scanner in = new Scanner(System.in);
-		if (in.hasNextInt()) {
-			val = in.nextInt();
-		} else if (in.hasNextDouble()) {
-			val = in.nextDouble();
-		} else if (in.hasNextBoolean()) {
-			val = in.nextBoolean();
-		} else
-			val = in.nextLine();
+		try (Scanner in = new Scanner(System.in)) {
+			if (in.hasNextInt()) {
+				val = in.nextInt();
+			} else if (in.hasNextDouble()) {
+				val = in.nextDouble();
+			} else if (in.hasNextBoolean()) {
+				val = in.nextBoolean();
+			} else
+				val = in.nextLine();
+		}
 		return val;
 	}
 }

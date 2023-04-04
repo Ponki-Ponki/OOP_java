@@ -1,4 +1,4 @@
-package dz_3.Figures.Base;
+package dz3.Figures.Base;
 
 public interface Lengthable {
     double length();
