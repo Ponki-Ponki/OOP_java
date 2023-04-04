@@ -1,6 +1,6 @@
-package dz_3.Figures;
+package dz3.Figures;
 
-import dz_3.Figures.Base.Polygon;
+import dz3.Figures.Base.Polygon;
 
 public class Rectangle extends Polygon {
 

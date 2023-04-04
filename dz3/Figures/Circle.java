@@ -1,7 +1,7 @@
-package dz_3.Figures;
+package dz3.Figures;
 
-import dz_3.Figures.Base.Figure;
-import dz_3.Figures.Base.Lengthable;
+import dz3.Figures.Base.Figure;
+import dz3.Figures.Base.Lengthable;
 
 public class Circle implements Figure, Lengthable,Comparable<Circle> {
 	private int radius;
