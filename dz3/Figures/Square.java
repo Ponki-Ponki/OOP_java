@@ -1,4 +1,4 @@
-package dz_3.Figures;
+package dz3.Figures;
 
 public class Square extends Rectangle{
     public Square(int length){
