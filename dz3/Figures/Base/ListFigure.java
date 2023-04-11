@@ -110,15 +110,16 @@ public class ListFigure {
 
 	public Object scan() {
 		Object val;
-		Scanner in = new Scanner(System.in);
-		if (in.hasNextInt()) {
-			val = in.nextInt();
-		} else if (in.hasNextDouble()) {
-			val = in.nextDouble();
-		} else if (in.hasNextBoolean()) {
-			val = in.nextBoolean();
-		} else
-			val = in.nextLine();
+		try (Scanner in = new Scanner(System.in)) {
+			if (in.hasNextInt()) {
+				val = in.nextInt();
+			} else if (in.hasNextDouble()) {
+				val = in.nextDouble();
+			} else if (in.hasNextBoolean()) {
+				val = in.nextBoolean();
+			} else
+				val = in.nextLine();
+		}
 		return val;
 	}
 }
